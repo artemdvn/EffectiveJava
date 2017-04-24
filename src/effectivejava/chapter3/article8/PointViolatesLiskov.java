@@ -1,19 +1,21 @@
 package effectivejava.chapter3.article8;
 
-public class Point {
+public class PointViolatesLiskov {
 	private final int x;
 	private final int y;
 
-	public Point(int x, int y) {
+	public PointViolatesLiskov(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
+	// Broken - violates Liskov substitution principle - Pages 39-40
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Point))
+		if (o == null || o.getClass() != getClass()) {
 			return false;
-		Point p = (Point) o;
+		}
+		PointViolatesLiskov p = (PointViolatesLiskov) o;
 		return p.x == x && p.y == y;
 	}
 
