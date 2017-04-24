@@ -1,5 +1,11 @@
 package effectivejava.chapter3.article8;
 
+/**
+ * A class of color point to show violation of symmetry.
+ * 
+ * @author Artem Dvornichenko  
+ * @since 2017-04-24
+ */
 public class ColorPointViolatesSymmetry extends Point {
 	private final Color color;
 

@@ -1,5 +1,11 @@
 package effectivejava.chapter3.article8;
 
+/**
+ * A class of color point to show the right usage of composition instead of inheritance.
+ * 
+ * @author Artem Dvornichenko  
+ * @since 2017-04-24
+ */
 public class ColorPointWithComposition {
 	private final Color color;
 	private final Point point;
@@ -29,18 +35,6 @@ public class ColorPointWithComposition {
 	@Override
 	public int hashCode() {
 		return point.hashCode() * 33 + color.hashCode();
-	}
-	
-	public static void main(String[] args) {
-
-		Point p = new Point(1, 2);
-		ColorPointWithComposition cp = new ColorPointWithComposition(1, 2, Color.RED);
-		System.out.println(p.equals(cp) + " " + cp.equals(p));
-
-		ColorPointWithComposition p1 = new ColorPointWithComposition(1, 2, Color.RED);
-		Point p2 = new Point(1, 2);
-		ColorPointWithComposition p3 = new ColorPointWithComposition(1, 2, Color.RED);
-		System.out.printf("%s %s %s%n", p1.equals(p2), p2.equals(p3), p1.equals(p3));
 	}
 
 }

@@ -7,14 +7,14 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class TestCounterPoint {
+public class CounterPointTest {
 
 	private Set<Point> unitCircle;
 	private Set<PointViolatesLiskov> unitCircleViolatesLiskov;
 
 	@Test
 	public void testCounterPointDoNotViolatesLiskov() {
-		unitCircle = new HashSet<Point>();
+		unitCircle = new HashSet<>();
 		unitCircle.add(new Point(1, 0));
 		unitCircle.add(new Point(0, 1));
 		unitCircle.add(new Point(-1, 0));
@@ -29,7 +29,7 @@ public class TestCounterPoint {
 
 	@Test
 	public void testCounterPointViolatesLiskov() {
-		unitCircleViolatesLiskov = new HashSet<PointViolatesLiskov>();
+		unitCircleViolatesLiskov = new HashSet<>();
 		unitCircleViolatesLiskov.add(new PointViolatesLiskov(1, 0));
 		unitCircleViolatesLiskov.add(new PointViolatesLiskov(0, 1));
 		unitCircleViolatesLiskov.add(new PointViolatesLiskov(-1, 0));

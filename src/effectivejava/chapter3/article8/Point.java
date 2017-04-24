@@ -1,5 +1,11 @@
 package effectivejava.chapter3.article8;
 
+/**
+ * A class of simple point.
+ * 
+ * @author Artem Dvornichenko  
+ * @since 2017-04-24
+ */
 public class Point {
 	private final int x;
 	private final int y;

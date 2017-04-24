@@ -13,21 +13,29 @@ public class IntegerArrayTest {
 	IntegerArray ia1;
 	IntegerArray ia2;
 	IntegerArray ia3;
+	int[] arr1 = { 1, 2, 3 };
+	int[] arr2 = { 1, 2, 3 };
+	int[] arr3 = { 5, 4, 3 };
 	
 	@Before
 	public void setUp() {
-		int[] arr1 = { 1, 2, 3 };
-		int[] arr2 = { 1, 2, 3 };
-		int[] arr3 = { 5, 4, 3 };
 		ia1 = new IntegerArray(arr1);
 		ia2 = new IntegerArray(arr2);
 		ia3 = new IntegerArray(arr3);	
+	}
+	
+	@Test
+	public void testArray() {
+		assertFalse(arr1.equals(arr2));
+		assertFalse(arr3.equals(arr2));
 	}
 
 	@Test
 	public void testIntegerArray() {
 		assertTrue(ia1.equals(ia2));
 		assertFalse(ia3.equals(ia2));
+		System.out.println(arr1);
+		System.out.println(Integer.toString(System.identityHashCode(arr1), 16));
 	}
 	
 	@Test

@@ -1,5 +1,11 @@
 package effectivejava.chapter3.article8;
 
+/**
+ * A class of color point to show violation of transitivity.
+ * 
+ * @author Artem Dvornichenko  
+ * @since 2017-04-24
+ */
 public class ColorPointViolatesTransitivity extends Point {
 	private final Color color;
 

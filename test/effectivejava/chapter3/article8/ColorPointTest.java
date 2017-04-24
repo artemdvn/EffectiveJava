@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestColorPoint {
+public class ColorPointTest {
 	
 	private Point p;
 	
@@ -15,25 +15,27 @@ public class TestColorPoint {
 	}
 	
 	@Test
-	public void testColorPointViolatesSymmetry() {
+	public void testSymmetryOfColorPointViolatesSymmetry() {
 		ColorPointViolatesSymmetry cp = new ColorPointViolatesSymmetry(1, 2, Color.RED);
 		
-		assertTrue(p.equals(cp));		
-		assertFalse(cp.equals(p));
+		assertFalse(p.equals(cp) == cp.equals(p));		
+//		assertTrue(cp.equals(p));
 	}
 	
 	@Test
-	public void testColorPointDoNotViolatesTransitivity() {
+	public void testTransitivityOfColorPointViolatesSymmetry() {
 		ColorPointViolatesSymmetry cp1 = new ColorPointViolatesSymmetry(1, 2, Color.RED);
-		ColorPointViolatesSymmetry cp2 = new ColorPointViolatesSymmetry(1, 2, Color.BLUE);
+		ColorPointViolatesSymmetry cp2 = new ColorPointViolatesSymmetry(1, 2, Color.RED);
 		
-		assertFalse(cp1.equals(p));		
+		assertTrue(cp1.equals(cp2));
 		assertTrue(p.equals(cp2));
-		assertFalse(cp1.equals(cp2));
+		assertFalse(cp1.equals(p));		
+		
+		
 	}
 	
 	@Test
-	public void testColorPointDoNotViolatesSymmetry() {
+	public void testSymmetryOfColorPointViolatesTransitivity() {
 		ColorPointViolatesTransitivity cp = new ColorPointViolatesTransitivity(1, 2, Color.RED);
 		
 		assertTrue(p.equals(cp));		
@@ -41,12 +43,12 @@ public class TestColorPoint {
 	}
 	
 	@Test
-	public void testColorPointViolatesTransitivity() {
+	public void testTransitivityOfColorPointViolatesTransitivity() {
 		ColorPointViolatesTransitivity cp1 = new ColorPointViolatesTransitivity(1, 2, Color.RED);
-		ColorPointViolatesTransitivity cp2 = new ColorPointViolatesTransitivity(1, 2, Color.BLUE);
-		
-		assertTrue(cp1.equals(p));		
+		ColorPointViolatesTransitivity cp2 = new ColorPointViolatesTransitivity(1, 2, Color.BLUE);		
+				
 		assertTrue(p.equals(cp2));
+		assertTrue(cp1.equals(p));
 		assertFalse(cp1.equals(cp2));
 	}
 

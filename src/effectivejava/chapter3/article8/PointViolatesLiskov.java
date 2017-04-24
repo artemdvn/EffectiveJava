@@ -1,5 +1,11 @@
 package effectivejava.chapter3.article8;
 
+/**
+ * A class of point to show violation of Liskov substitution principle.
+ * 
+ * @author Artem Dvornichenko  
+ * @since 2017-04-24
+ */
 public class PointViolatesLiskov {
 	private final int x;
 	private final int y;
@@ -9,7 +15,6 @@ public class PointViolatesLiskov {
 		this.y = y;
 	}
 
-	// Broken - violates Liskov substitution principle - Pages 39-40
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || o.getClass() != getClass()) {
