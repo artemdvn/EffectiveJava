@@ -12,11 +12,11 @@ public class PersonTest {
 		Person p2 = new Person("Alex", 12, true, new PhoneNumber(111, 222, 333), 35.5f);
 		Person p3 = new Person("Alex", 12, true, new PhoneNumber(555, 666, 777), 35.5f);
 		
-		assertTrue(p1.equals(p2));
-		assertFalse(p1.equals(p3));
+		assertTrue(p1.equals(p2) == (p1.hashCode() == p2.hashCode()));
+		assertTrue(p1.equals(p3) == (p1.hashCode() == p3.hashCode()));
 		
 		p3.setPhone(new PhoneNumber(111, 222, 333));
-		assertTrue(p1.equals(p3));
+		assertTrue(p1.equals(p3) == (p1.hashCode() == p3.hashCode()));
 	}
 	
 	@Test
@@ -35,11 +35,11 @@ public class PersonTest {
 		AdvancedPerson p2 = new AdvancedPerson("Alex", 12, true, new PhoneNumber(111, 222, 333), 35.5f);
 		AdvancedPerson p3 = new AdvancedPerson("Alex", 12, true, new PhoneNumber(555, 666, 777), 35.5f);
 		
-		assertTrue(p1.equals(p2));
-		assertFalse(p1.equals(p3));
+		assertTrue(p1.equals(p2) == (p1.hashCode() == p2.hashCode()));
+		assertTrue(p1.equals(p3) == (p1.hashCode() == p3.hashCode()));
 		
 		p3.setPhone(new PhoneNumber(111, 222, 333));
-		assertTrue(p1.equals(p3));
+		assertTrue(p1.equals(p3) == (p1.hashCode() == p3.hashCode()));
 	}
 
 }

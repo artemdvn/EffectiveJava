@@ -8,11 +8,11 @@ package effectivejava.chapter3.article9;
  */
 public class ImmutablePerson {
 	
-	private String name;
-	private int age;
-	private boolean isAlive;
-	private PhoneNumber phone;
-	private float temperature;
+	private final String name;
+	private final int age;
+	private final boolean isAlive;
+	private final PhoneNumber phone;
+	private final float temperature;
 	private volatile int hashCode;
 		
 	public ImmutablePerson(String name, int age, boolean isAlive, PhoneNumber phone, float temperature) {

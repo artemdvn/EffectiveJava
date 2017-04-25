@@ -102,7 +102,7 @@ public class AdvancedPerson {
 			return false;
 		}
 
-		if (Float.floatToIntBits(temperature) != Float.floatToIntBits(other.temperature)) {
+		if (Float.hashCode(temperature) != Float.hashCode(other.temperature)) {
 			return false;
 		}
 
