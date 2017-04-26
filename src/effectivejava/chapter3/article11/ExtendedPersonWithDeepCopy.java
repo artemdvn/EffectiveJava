@@ -1,26 +1,29 @@
 package effectivejava.chapter3.article11;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * A class of extended person to show clone().
+ * A class of extended person to show deep copy.
  * 
  * @author Artem Dvornichenko
  * @since 2017-04-26
  */
-public class ExtendedPerson extends BasePerson {
-
+public class ExtendedPersonWithDeepCopy extends BasePerson {
+	
 	private boolean isAlive;
 	private PhoneNumber phone;
 	private float temperature;
 	private List<Order> orders;
+	private final int[] intArray = {1,2,3};
 
-	public ExtendedPerson(String name) {
+	public ExtendedPersonWithDeepCopy(String name) {
 		super(name);
 	}
 
-	public ExtendedPerson(String name, int age, boolean isAlive, PhoneNumber phone, float temperature, List<Order> orders) {
+	public ExtendedPersonWithDeepCopy(String name, int age, boolean isAlive, PhoneNumber phone, float temperature,
+			List<Order> orders) {
 		super(name, age);
 		this.isAlive = isAlive;
 		this.phone = phone;
@@ -50,7 +53,7 @@ public class ExtendedPerson extends BasePerson {
 
 	public void setTemperature(float temperature) {
 		this.temperature = temperature;
-	}	
+	}
 
 	public List<Order> getOrders() {
 		return orders;
@@ -58,11 +61,10 @@ public class ExtendedPerson extends BasePerson {
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
-	}
-	
-	@Override
-	public String ageToString() {
-		return phone.toString();
+	}	
+
+	public int[] getIntArray() {
+		return intArray;
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class ExtendedPerson extends BasePerson {
 			return false;
 		}
 
-		ExtendedPerson other = (ExtendedPerson) obj;
+		ExtendedPersonWithDeepCopy other = (ExtendedPersonWithDeepCopy) obj;
 
 		if (age != other.age) {
 			return false;
@@ -96,7 +98,7 @@ public class ExtendedPerson extends BasePerson {
 		if (Float.floatToIntBits(temperature) != Float.floatToIntBits(other.temperature)) {
 			return false;
 		}
-		
+
 		if (orders == null) {
 			if (other.orders != null) {
 				return false;
@@ -104,19 +106,24 @@ public class ExtendedPerson extends BasePerson {
 		} else if (!orders.equals(other.orders)) {
 			return false;
 		}
-
+		
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Extended Person [name=" + name + ", age=" + age + ", isAlive=" + isAlive + ", phone=" + phone
-				+ ", temperature=" + temperature + "]";
+		return "Extended Person With Deep Copy [name=" + name + ", age=" + age + ", isAlive=" + isAlive + ", phone="
+				+ phone + ", temperature=" + temperature + "]";
 	}
-	
+
 	@Override
-	public ExtendedPerson clone() {
-		return (ExtendedPerson) super.clone();
+	public ExtendedPersonWithDeepCopy clone() {
+		ExtendedPersonWithDeepCopy result = (ExtendedPersonWithDeepCopy) super.clone();
+		result.orders = new ArrayList<Order>();
+		for (Order order : orders) {
+			result.orders.add(order.deepCopy());
+		}
+		return result;
 	}
 
 }
