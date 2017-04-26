@@ -16,7 +16,7 @@ public final class PhoneNumber implements Cloneable {
 		this.prefix = (short) prefix;
 		this.lineNumber = (short) lineNumber;
 	}
-
+	
 	private static void rangeCheck(int arg, int max, String name) {
 		if (arg < 0 || arg > max)
 			throw new IllegalArgumentException(name + ": " + arg);
