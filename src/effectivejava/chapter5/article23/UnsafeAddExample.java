@@ -1,0 +1,38 @@
+package effectivejava.chapter5.article23;
+
+import java.util.List;
+import java.util.Set;
+
+public class UnsafeAddExample {
+
+	public static void unsafeAdd(List list, Object o) {
+		list.add(o);
+	}
+
+	public static void safeAdd(List<Object> list, Object o) {
+		list.add(o);
+	}
+
+	// Use of raw type for unknown element type - don't do this!
+	public static int rawNumElementsInCommon(Set s1, Set s2) {
+		int result = 0;
+		for (Object o1 : s1) {
+			if (s2.contains(o1)) {
+				result++;
+			}
+		}
+		return result;
+	}
+
+	// Unbounded wildcard type - typesafe and flexible
+	public static int numElementsInCommon(Set<?> s1, Set<?> s2) {
+		int result = 0;
+		for (Object o1 : s1) {
+			if (s2.contains(o1)) {
+				result++;
+			}
+		}
+		return result;
+	}
+
+}
