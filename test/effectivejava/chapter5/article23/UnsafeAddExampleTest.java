@@ -41,9 +41,9 @@ public class UnsafeAddExampleTest {
 	
 	@Test
 	public void testNumElementsInCommon() {
-		Set<?> set1 = new HashSet();
+		Set<?> set1 = new HashSet<>();
 		set1.add(null);
-		Set<?> set2 = new HashSet();
+		Set<?> set2 = new HashSet<>();
 		
 		assertEquals(0, UnsafeAddExample.numElementsInCommon(set1, set2));
 	}
